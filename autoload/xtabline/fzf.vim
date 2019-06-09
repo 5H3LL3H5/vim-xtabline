@@ -160,7 +160,12 @@ fun! xtabline#fzf#tab_load(...)
       let T[prop] = saved[prop]
     endfor
 
+    if !isdirectory(cwd)
+      return self.msg('[xtabline] directory doesn''t exists', 1)
+    endif
+
     $tabnew | let newbuf = bufnr("%")
+    if F.cd(T.cwd) | return | endif
     cd `=cwd`
 
     "add buffers
