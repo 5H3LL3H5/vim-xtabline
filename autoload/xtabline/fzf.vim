@@ -503,7 +503,7 @@ fun! s:sessions_list(...) abort " {{{1
   endif
 
   for s in ordered
-    let n = fnamemodify(expand(s), ':t:r')
+    let n = fnamemodify(expand(s), ':t')
     let description = s:desc_string(s, n, sfile, !a:0)
     call add(data, description)
   endfor
